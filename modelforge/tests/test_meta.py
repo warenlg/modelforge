@@ -17,11 +17,13 @@ class MetaTests(unittest.TestCase):
         self.assertEqual(meta["version"], [1, 0, 0])
         self.assertEqual(meta["description"], "new description")
         self.assertEqual(meta["vendor"], "vendor")
-        for key in ("created_at", "parent", "series", "code", "environment", "extra"):
+        for key in ("parent", "series", "code", "extra"):
             self.assertIsNone(meta[key], key)
         for key in ("tags", "references", "datasets", "dependencies"):
             self.assertEqual(meta[key], [], key)
+        self.assertIsInstance(meta["created_at"], datetime)
         self.assertEqual(meta["metrics"], {})
+        self.assertEqual(meta["environment"], {})
 
         with self.assertRaises(ValueError):
             met.generate_new_meta("first", "new description", "vendor", "Madrid")

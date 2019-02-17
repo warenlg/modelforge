@@ -32,12 +32,12 @@ def generate_new_meta(name: str, description: str, vendor: str, license: str) ->
     check_license(license)
     return {
         "code": None,
-        "created_at": None,
+        "created_at": get_datetime_now(),
         "datasets": [],
         "dependencies": [],
         "description": description,
         "vendor": vendor,
-        "environment": None,
+        "environment": {},
         "extra": None,
         "license": license,
         "metrics": {},
